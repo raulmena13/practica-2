@@ -1,0 +1,64 @@
+public class Main {
+    private int velocidad = 0;
+    private boolean motor = false;
+    private String color;
+    private String modelo;
+    private static String marca;
+    private static int numeroDeAutos = 0;
+
+    public void Automovil(String fabricante, String tipo) {
+        String modelo = tipo;
+        Automovil.marca = fabricante; // Usar "this" no es necesario para atributos estáticos, pero es una elección personal.
+        numeroDeAutos++;
+    }
+
+    public void encenderMotor() {
+        motor = true;
+        System.out.println("Motor encendido");
+    }
+
+    public void apagarMotor() {
+        motor = false;
+        System.out.println("Motor apagado");
+    }
+
+    public void acelerar(int cantidad) {
+        if (motor) {
+            velocidad += cantidad;
+            System.out.println("Vamos a " + velocidad + " kph");
+        } else {
+            System.out.println("El motor está apagado!");
+        }
+    }
+
+    public void frenar() {
+        velocidad = 0;
+        System.out.println("Nos hemos detenido!");
+    }
+
+    public int verVelocidad() {
+        return velocidad;
+    }
+
+    public void duplicarVelocidad() {
+        velocidad *= 2;
+        System.out.println("Ahora vas a " + velocidad + " km/h!");
+    }
+
+    public static int verNumeroDeAutos() {
+        return numeroDeAutos;
+    }
+
+    public static void pintar(Automovil auto) {
+        auto.color = "Negro";
+    }
+
+
+
+    public static void main(String[] args) {
+        Automovil auto = new Automovil("Ford", "Fiesta");
+        auto.encenderMotor();
+        auto.acelerar(50);
+        auto.frenar();
+    }
+}
